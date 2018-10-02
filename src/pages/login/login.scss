@@ -1,0 +1,28 @@
+page-login {
+  .item-md {
+    background-color: transparent !important;
+    padding-left: 0 !important;
+  }
+  .scroll-content{
+    background: url(../assets/svg/everest-bg.svg) no-repeat;
+    background-position-x: center;
+    background-position-y: 00%;
+    background-size: 120%;
+    padding: 30px 40px !important;
+  }
+
+  .app-logo {
+    max-width: 40%;
+    margin: auto;
+    margin-bottom: 20px;
+  }
+
+  .form-footer {
+    margin-bottom: 20px;
+    padding-top: 5px;
+  }
+
+  .form-footer .item-md.item-block .item-inner {
+    border-bottom: none !important;
+  }
+}

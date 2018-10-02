@@ -1,0 +1,45 @@
+<ion-content>
+
+  <ion-grid style="margin-top:30%;">
+    <ion-row style="text-align:center">
+      <ion-col>
+        <div class="welcome-msg ">
+            <div class="app-logo"><img src="assets/svg/everest-logo.svg" alt="Everest Logo"></div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+
+          <div>
+            <ion-item>
+              <ion-label floating>Email</ion-label>
+              <ion-input type="text" value=""></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label floating>Password</ion-label>
+              <ion-input type="password"></ion-input>
+            </ion-item>
+
+          </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="form-footer">
+      <ion-col>
+        <ion-item>
+          <ion-label>Stay signed in</ion-label>
+          <ion-checkbox></ion-checkbox>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <button full ion-button class="btn-round" (click)="login()">Login</button>
+    </ion-row>
+  </ion-grid>
+
+
+
+</ion-content>

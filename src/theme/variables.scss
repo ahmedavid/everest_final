@@ -34,7 +34,7 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
+  primary:    #365ACE,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
@@ -86,3 +86,14 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+.item-md.item-input.item-input-has-focus .item-inner, .item-md.item-input.input-has-focus .item-inner {
+  border-bottom-color: #000 !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+
+$background-color : #F2F2F2 !important;
+$label-md-text-color-focused:#000 !important;
+$label-wp-text-color-focused:#000 !important;
