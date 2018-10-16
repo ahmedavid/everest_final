@@ -1,1 +1,38 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="nav">
+    <ion-header>
+        <ion-toolbar class="user-profile nav-transparent">
+
+          <ion-grid>
+            <ion-row>
+              <ion-col col-4>
+                <ion-avatar item-start>
+                  <img *ngIf="company" class="user-avatar" [src]="'https://portal.everest.hu/'+company?.logo">
+                </ion-avatar>
+              </ion-col>
+              <ion-col col-8>
+                <h4 ion-text style="line-height: 3.8;" class="text-white bold" no-margin>{{company?.title}}</h4>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+        </ion-toolbar>
+      </ion-header>
+    <ion-content *ngIf="data.menuItems$ | async as menuItems" class="side-menu">
+      <!-- <h2 style="color:white;margin: 40px;">Everest</h2> -->
+      <ion-list no-lines style="margin-left:10px">
+        <button ion-item menuClose *ngFor="let item of menuItems" (click)="onSelectMenuItem(item)">
+          <ion-icon item-left [name]="item.icon" color="light"></ion-icon>
+            {{item.title}}
+        </button>
+
+        <hr>
+        <button ion-item (click)="onOpenPage('MessageCenterPage')">
+          <ion-icon item-left name="chatbubbles" color="light"></ion-icon>
+          Üzenetek
+        </button>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+
+<ion-nav [root]="rootPage" #nav></ion-nav>

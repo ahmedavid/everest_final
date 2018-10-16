@@ -8,21 +8,21 @@
         </div>
       </ion-col>
     </ion-row>
+    <form [formGroup]="form">
     <ion-row>
       <ion-col>
 
-          <div>
+
             <ion-item>
-              <ion-label floating>Email</ion-label>
-              <ion-input type="text" value=""></ion-input>
+              <ion-label floating><ion-icon name="mail" item-start class="text-white"></ion-icon> Email</ion-label>
+              <ion-input type="text" formControlName="email" value="minta@everest.hu"></ion-input>
             </ion-item>
 
             <ion-item>
-              <ion-label floating>Password</ion-label>
-              <ion-input type="password"></ion-input>
+              <ion-label floating><ion-icon name="lock" item-start class="text-white"></ion-icon> Password</ion-label>
+              <ion-input type="password" formControlName="password" value="minta2017"></ion-input>
             </ion-item>
 
-          </div>
       </ion-col>
     </ion-row>
 
@@ -36,8 +36,9 @@
     </ion-row>
 
     <ion-row>
-      <button full ion-button class="btn-round" (click)="login()">Login</button>
+      <button full ion-button class="btn-round" (click)="login()" [disabled]="!form.valid">Login</button>
     </ion-row>
+  </form>
   </ion-grid>
 
 

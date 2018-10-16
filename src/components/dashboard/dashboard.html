@@ -1,0 +1,25 @@
+
+<date-navigator
+*ngIf="next && previous"
+[title]="title"
+[next]="next"
+[previous]="previous"
+(prevNext)="onPrevNext($event)">
+</date-navigator>
+
+<!-- <div class="box" [ngClass]="{'box-expanded':toggle}"></div> -->
+
+<expanding-card-list (onToggleCheckbox)="onTogglePaid($event)" [showCheckbox]="true" [toggleBody]="true" [tbody]="tbody" [thead]="thead"></expanding-card-list>
+
+
+<ion-fab bottom right style="position: fixed;">
+<button ion-fab color="primary"><ion-icon name="arrow-dropup"></ion-icon></button>
+<ion-fab-list side="top">
+  <button ion-fab color="light" navPush="UploadPage">
+    <ion-icon name="cloud-upload"></ion-icon>
+    <ion-label>Számlaképek feltöltése</ion-label>
+  </button>
+</ion-fab-list>
+</ion-fab>
+
+

@@ -1,24 +1,28 @@
 import { Component } from '@angular/core';
-import { Platform, ToastController } from 'ionic-angular';
+import { Platform, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+
 import { Network } from '@ionic-native/network';
-import { AuthService } from '../services/auth.service';
+import { ConnectionService } from '../services/connection.service';
+import { DataService } from '../services/data.service';
+import { Company } from '../models/interfaces';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
+  company: Company;
   rootPage:any = 'LoginPage';
 
   constructor(
     platform: Platform,
     statusBar: StatusBar,
     splashScreen: SplashScreen,
-    private network: Network,
-    private toast: ToastController,
-    private auth: AuthService
+    private conn: ConnectionService,
+    private data: DataService,
+    private menu: MenuController
   ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -27,14 +31,11 @@ export class MyApp {
       //statusBar.backgroundColorByHexString('#F2F2F2');
       splashScreen.hide();
 
-      this.network.onDisconnect().subscribe(() => {
-        this.toast.create({message:'No Connection'}).present();
-        this.auth.isOnline = false;
+      this.data.companyObservable$.subscribe(c => {
+        this.company = c
+        console.log(this.company)
       });
-      this.network.onConnect().subscribe(() => {
-        this.toast.create({message:'Connected'}).present();
-        this.auth.isOnline = true;
-      });
+      this.menu.enable(false);
     });
   }
 }

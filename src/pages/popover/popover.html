@@ -1,0 +1,5 @@
+<ion-list no-lines>
+    <ion-list-header> Felhasználó </ion-list-header>
+    <button *ngIf="!isCompanySelectionPage" ion-item detail-none (click)="navigateTo('CompanySelectionPage')"> <ion-icon name="book" item-left></ion-icon>Cégválasztó</button>
+    <button ion-item detail-none (click)="logout()"> <ion-icon name="log-out" item-left></ion-icon>Kijelentkezés</button>
+  </ion-list>

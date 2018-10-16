@@ -1,0 +1,38 @@
+expanding-card-list {
+  .card{
+    border-radius: 15px;
+  }
+  .checkbox{
+    position: absolute;
+    right: 10px;
+    top: 70px;
+  }
+
+  .view-btn{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+  }
+  .tiny-title{
+    color: color($colors,primary);
+    font-size: .7em;
+  }
+  .label{
+    margin: 0 !important;
+  }
+  .open-card{
+    transition: all .3s ease-in;
+    max-height: 500px;
+  }
+  .collapsed-card{
+    transition: all .3s ease-out;
+    max-height: 106px !important;
+  }
+
+  .expand-button{
+    top: 2px;
+    right: 0;
+    position: absolute;
+    z-index: 100;
+  }
+}

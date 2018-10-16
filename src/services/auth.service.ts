@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
-import { AuthResponse } from '../models/interfaces';
+import { AuthResponse, Company } from '../models/interfaces';
 
 @Injectable()
 export class AuthService {
@@ -29,5 +29,26 @@ export class AuthService {
         error => reject(error)
       )
     });
+  }
+
+  async getCurrentCopmany(): Promise<Company> {
+    return await this.storage.get('current_company');
+  }
+
+  setCurrentCompany(company: Company){
+    this.storage.set('current_company',company);
+  }
+
+  async getToken(): Promise<string>{
+    if(!this.access_token){
+      this.access_token = await this.storage.get('access_token');
+    }
+    return this.access_token;
+  }
+
+  logout(): Promise<any> {
+    this.storage.set('access_token',null);
+    this.storage.set('current_company',null);
+    return;
   }
 }

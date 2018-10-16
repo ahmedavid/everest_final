@@ -1,0 +1,39 @@
+<ion-card class="secondary-bg" *ngIf="title" [ngClass]="{'opt-card':opt}" (click)="toggleBody=!toggleBody">
+  <ion-card-content color="secondary" style="position: relative;">
+      <div class="expand-button">
+          <button clear ion-button icon-only color="white">
+              <ion-icon name="arrow-dropdown" *ngIf="toggleBody"></ion-icon>
+              <ion-icon name="arrow-dropright" *ngIf="!toggleBody"></ion-icon>
+          </button>
+        </div>
+    <h2 text-center ion-text color="white">{{title}}</h2>
+  </ion-card-content>
+</ion-card>
+<ng-container *ngIf="toggleBody">
+    <ion-card *ngFor="let row of tbody;let j = index" (click)="onToggle(row)" [ngClass]="{'collapsed-card': !row.toggle,'open-card': row.toggle}">
+      <ion-card-content style="position: relative;">
+        <div class="expand-button">
+          <button clear ion-button icon-only >
+              <ion-icon name="arrow-dropdown" *ngIf="row.toggle"></ion-icon>
+              <ion-icon name="arrow-dropright" *ngIf="!row.toggle"></ion-icon>
+          </button>
+
+
+          <!-- <ion-checkbox [(ngModel)]="cucumber" (ionChange)="updateCucumber()"></ion-checkbox> -->
+        </div>
+        <ion-list no-lines>
+          <ng-container *ngFor="let column of row;let i=index">
+            <ion-item *ngIf="column.type !== 'link'" no-padding>
+              <h5 ion-text color="light" class="tiny-title">{{thead[i]}}</h5> {{column}}
+            </ion-item>
+            <ion-checkbox (ionChange)="onPaidChanged($event,j)" color="secondary" *ngIf="showCheckbox && i==5" [checked]="column == 'Igen'" class="checkbox"></ion-checkbox>
+            <button clear class="view-btn" ion-button color="secondary" *ngIf="showLink && column.type == 'link'" icon-only (click)="onViewDetail($event,column.src)">
+              <ion-icon name="eye"></ion-icon>
+            </button>
+          </ng-container>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+</ng-container>
+
+

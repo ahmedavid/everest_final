@@ -15,9 +15,64 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
-
-
+.text-white{
+  color:#fff;
+}
 .btn-round{
   border-radius: 50px;
   height: 50px;
+}
+.item-md {
+  background-color: transparent !important;
+}
+
+.user-avatar {
+  width: 80px;
+  height: 80px;
+  display: inline-block;
+  border-radius: 50%;
+  box-shadow: inset 0 0 10rem rgba(0,0,0,.25), 0 0 4rem rgba(255,255,255,.45);
+  background: url("../assets/img/avatar.jpeg") no-repeat;
+  background-size: 100%;
+}
+
+.side-menu{
+  background: url(../assets/svg/everest-bg-2.svg) no-repeat;
+  background-size: 120%;
+  background-color: #16305C !important;
+  .label{
+    line-height: 25px;
+    font-size: 20px;
+    font-weight: 600;
+    color:white;
+  }
+}
+.toolbar-background{
+  background: transparent !important;
+}
+
+.header::after{
+  background-image: none !important;
+}
+
+.loading-wrapper{
+  background: url(../assets/svg/everest-bg-2.svg) no-repeat #16305C !important;
+  color: #fff !important;
+  background-size: 120%;
+  border-radius: 15px;
+}
+
+ion-spinner {
+  width: 68px !important;
+  height: 48px !important;
+}
+ion-spinner * {
+  width: 68px !important;
+  height: 68px !important;
+  stroke: #FFF !important;
+  fill: #FFF !important;
+}
+
+.loading-md .spinner-dots circle {
+  fill: #fff;
 }
