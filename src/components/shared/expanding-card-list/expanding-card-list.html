@@ -1,7 +1,7 @@
 <ion-card class="secondary-bg" *ngIf="title" [ngClass]="{'opt-card':opt}" (click)="toggleBody=!toggleBody">
-  <ion-card-content color="secondary" style="position: relative;">
+  <ion-card-content color="primary" style="position: relative;">
       <div class="expand-button">
-          <button clear ion-button icon-only color="white">
+          <button clear ion-button icon-only color="light">
               <ion-icon name="arrow-dropdown" *ngIf="toggleBody"></ion-icon>
               <ion-icon name="arrow-dropright" *ngIf="!toggleBody"></ion-icon>
           </button>

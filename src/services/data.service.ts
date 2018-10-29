@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators/map';
 import {catchError} from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 
-import { Companies, Company, MenuItem } from '../models/interfaces';
+import { Companies, Company, MenuItem, ContentContainer } from '../models/interfaces';
 import { AuthService } from './auth.service';
 
 @Injectable()
@@ -55,6 +55,27 @@ export class DataService {
     );
   }
 
+  async getData(link: string,query:string = ''){
+    const q = query.length > 0 ? '&year=' + query : '';
+    const company = await this.auth.getCurrentCopmany();
+    const url = this.baseUrl + link + '?selected_company_id='+company.id+q;
+    return this.http.get<ContentContainer[]>(url).toPromise();
+  }
+
+  async getMonth(src: string){
+    const link = src.replace('/app.php','');
+    const company = await this.auth.getCurrentCopmany();
+    const url = this.baseUrl + link + '?selected_company_id='+company.id;
+    return this.http.get<ContentContainer[]>(url).toPromise();
+  }
+
+  async getClosingData(link: string,query:string = ''){
+    const q = query.length > 0 ? '&actual_year=' + query : '';
+    const company = await this.auth.getCurrentCopmany();
+    const url = this.baseUrl + link + '?selected_company_id='+company.id+q;
+    return this.http.get<ContentContainer[]>(url).toPromise();
+  }
+
   async getMenu(){
     console.log("GETTING MENU")
     const token = await this.auth.getToken();
@@ -68,4 +89,10 @@ export class DataService {
     }
     return this.http.get<any>(this.baseUrl + dateFrom).toPromise();
   }
+
+  async uploadInvoice(url:string,formData:FormData){
+    const token = await this.auth.getToken();
+    return this.http.post("https://portal.everest.hu" + url,formData).toPromise();
+  }
+
 }

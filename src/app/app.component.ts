@@ -4,23 +4,20 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 
-import { Network } from '@ionic-native/network';
-import { ConnectionService } from '../services/connection.service';
 import { DataService } from '../services/data.service';
-import { Company } from '../models/interfaces';
+import { Company, MenuItem } from '../models/interfaces';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   company: Company;
-  rootPage:any = 'LoginPage';
+  rootPage:any = 'DashboardPage';
 
   constructor(
     platform: Platform,
     statusBar: StatusBar,
     splashScreen: SplashScreen,
-    private conn: ConnectionService,
     private data: DataService,
     private menu: MenuController
   ) {
@@ -38,5 +35,10 @@ export class MyApp {
       this.menu.enable(false);
     });
   }
+
+  onSelectMenuItem(item: MenuItem){
+    this.data.selectedMenuItemObserver$.next(item.url);
+  }
+
 }
 

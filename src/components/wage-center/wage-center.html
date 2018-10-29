@@ -1,0 +1,10 @@
+<select-card [container]="selectYearContainer" (onChange)="onDateChange($event)"></select-card>
+
+<stat-card [title]="statTitle" [stats]="statistics"></stat-card>
+
+<expanding-card-list *ngIf="table"
+    [title]="table.title"
+    [thead]="table.thead"
+    [tbody]="table.tbody"
+    (url)="onUrl($event)"
+    ></expanding-card-list>

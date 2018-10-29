@@ -1,0 +1,5 @@
+<info-fab [infos]="infos"></info-fab>
+
+<ng-container *ngFor="let invoice of invoiceArr;let i = index">
+  <expanding-card-list (url)="onUrl($event)" [opt]="i==0" [title]="invoice.title" [thead]="invoice.content.thead" [tbody]="invoice.content.tbody"></expanding-card-list>
+</ng-container>

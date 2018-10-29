@@ -1,0 +1,8 @@
+<ion-fab bottom right>
+  <button ion-fab color="danger"><ion-icon name="warning"></ion-icon></button>
+  <ion-fab-list side="left">
+    <button *ngFor="let info of infos" ion-fab [color]="info.content.type == 'info' ? 'light' : 'secondary'" (click)="showAlert(info)">
+      <ion-icon [name]="info.content.type=='info' ? 'information' : 'help'"></ion-icon>
+    </button>
+  </ion-fab-list>
+</ion-fab>

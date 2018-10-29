@@ -1,0 +1,15 @@
+<ion-card *ngIf="quickStats" class="opt-card">
+
+  <ion-card-content>
+    <ion-list no-lines style="margin-top:0">
+      <ion-item *ngFor="let stat of quickStats?.content">
+        <ion-label>{{stat.title}}</ion-label>
+        <div item-content ><ion-badge color="secondary">{{stat.value}}</ion-badge></div>
+
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>
+
+<expanding-card-list *ngIf="carList" [showLink]="false" [thead]="carList?.content.thead" [tbody]="carList?.content.tbody" [title]="carList?.title">
+</expanding-card-list>

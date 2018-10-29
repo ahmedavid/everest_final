@@ -1,0 +1,24 @@
+<select-card [container]="select" (onChange)="yearChanged($event)"></select-card>
+<info-fab [infos]="help"></info-fab>
+
+
+<ion-slides slidesPerView="1" [pager]="true" [centeredSlides]="false">
+  <ion-slide *ngFor="let info of merged;let i = index">
+    <h2>{{info.month}}</h2>
+    <p [ngStyle]="{color:info.income.color}">{{info.income.title}}: {{info.income.value | currency:'HUF':'symbol':'4.0'}}</p>
+    <p [ngStyle]="{color:info.expense.color}">{{info.expense.title}}: {{info.expense.value | currency:'HUF':'symbol':'4.0'}}</p>
+    <p>Eredmény: {{info.income.value - info.expense.value | currency:'HUF':'symbol':'4.0'}}</p>
+  </ion-slide>
+</ion-slides>
+
+
+<stat-card *ngFor="let stat of icons" [stats]="stat.content" [title]="stat.title"></stat-card>
+<charts [charts]="charts"></charts>
+
+<expanding-card-list [showLink]="false" [title]="customers?.title" [thead]="customers?.content.thead" [tbody]="customers?.content.tbody">
+
+</expanding-card-list>
+
+<expanding-card-list [showLink]="false" [title]="partners?.title" [thead]="partners?.content.thead" [tbody]="partners?.content.tbody">
+
+</expanding-card-list>

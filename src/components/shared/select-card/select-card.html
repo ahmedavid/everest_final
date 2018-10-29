@@ -1,0 +1,10 @@
+<ion-card class="opt-card">
+  <ion-card-content color="secondary">
+    <ion-item *ngIf="container">
+      <ion-label>{{container.title}}</ion-label>
+      <ion-select (ionChange)="change($event)">
+        <ion-option *ngFor="let option of container.values;let i = index" [selected]="i==0" [value]="option.value">{{option.text}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-card-content>
+</ion-card>

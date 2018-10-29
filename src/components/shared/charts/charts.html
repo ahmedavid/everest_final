@@ -1,0 +1,40 @@
+<div >
+  <ion-row  *ngFor="let dc of doughnutChart">
+    <ion-col [style.width.%]="dc.width">
+      <ion-card>
+      <ion-card-header text-center>{{dc.title}}</ion-card-header>
+        <ion-card-content>
+          <canvas width="300" height="300" responsive="true" baseChart
+          [data]="dc.data"
+          [labels]="dc.label"
+          [chartType]="'doughnut'"
+          [colors]="dc.color">
+          </canvas>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</div>
+
+  <!--
+    *Design for line chart
+-->
+<div>
+  <ion-row *ngFor="let lc of lineCharts" [style.background-color]="lc.color">
+    <ion-col [style.width.%]="lc.width">
+      <ion-card>
+        <ion-card-header text-center> {{lc.title}}</ion-card-header>
+        <ion-card-content>
+          <canvas width="300" height="300" responsive="true" baseChart
+            [datasets]="lc.data"
+            [labels]="lc.labels"
+            [options]="lineChartOptions"
+            [colors]="lc.color"
+            [legend]="lineChartLegend"
+            [chartType]="'line'">
+          </canvas>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</div>

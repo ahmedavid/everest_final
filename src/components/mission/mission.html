@@ -1,0 +1,3 @@
+<ng-container *ngFor="let m of missionArr;let i = index">
+  <expanding-card-list [opt]="i==0" [title]="m.title" [thead]="m.content.thead" [tbody]="m.content.tbody"></expanding-card-list>
+</ng-container>

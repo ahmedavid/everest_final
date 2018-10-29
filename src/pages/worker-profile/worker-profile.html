@@ -1,0 +1,19 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Profil</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+    <stat-card [title]="stats?.title" [stats]="stats?.content"></stat-card>
+
+  <ng-container *ngFor="let invoice of invoiceArr;let i = index">
+    <expanding-card-list [showCheckbox]="false" [opt]="i==0" [title]="invoice.title" [thead]="invoice.content.thead" [tbody]="invoice.content.tbody"></expanding-card-list>
+  </ng-container>
+
+</ion-content>
+

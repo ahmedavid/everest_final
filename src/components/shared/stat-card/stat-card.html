@@ -1,0 +1,14 @@
+<ion-card class="opt-card">
+  <ion-card-header class="secondary-bg">
+    <h2 ion-text text-center class="text-white">{{title}}</h2>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-list>
+      <ion-item *ngFor="let stat of stats" [ngStyle]="{'color':stat.color,'font-size':'2em'}">
+        <ion-icon name={{stat.icon}} item-start></ion-icon>
+        <h2 ion-text color="secondary">{{stat.title}}</h2>
+        <p ion-text color="primary">{{stat.description}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>

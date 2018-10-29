@@ -18,6 +18,18 @@
 
 <ion-content>
 
-  <dashboard></dashboard>
+  <ng-container [ngSwitch]="component">
+    <!-- <dashboard *ngSwitchDefault></dashboard> -->
+    <dashboard *ngSwitchCase="'dashboard'"></dashboard>
+    <reports *ngSwitchCase="'report'"></reports>
+    <invoice *ngSwitchCase="'invoice'" (url)="onUrl($event)"></invoice>
+    <wage-center *ngSwitchCase="'wage-center'"></wage-center>
+    <company-car *ngSwitchCase="'company-car'"></company-car>
+    <mission *ngSwitchCase="'mission'"></mission>
+    <statistics *ngSwitchCase="'statistics'"></statistics>
+    <closings *ngSwitchCase="'closings'"></closings>
+    <overview *ngSwitchCase="'overview'"></overview>
+</ng-container>
+
 
 </ion-content>

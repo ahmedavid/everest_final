@@ -1,0 +1,11 @@
+<select-card [container]="selectData" (onChange)="loadData($event)"></select-card>
+<stat-card [title]="stats?.title" [stats]="stats?.content"></stat-card>
+
+<expanding-card-list
+[showCheckbox]="false"
+[toggleBody]="true"
+[tbody]="pdf?.content.tbody"
+[thead]="pdf?.content.thead"
+(url)="openPDF($event)"
+>
+</expanding-card-list>

@@ -1,0 +1,23 @@
+<ng-container *ngIf="loaded">
+  <select-card [container]="selectYearContainer"></select-card>
+
+  <stat-card [title]="statTitle" [stats]="statContent"></stat-card>
+  <stat-card [title]="resultTitle" [stats]="resultContent"></stat-card>
+
+  <expanding-card-list [title]="tableTitle" [thead]="thead" [tbody]="tbody"></expanding-card-list>
+
+  <ion-card *ngIf="chartData.length > 0">
+    <ion-card-header text-center>{{chartTitle}}</ion-card-header>
+    <ion-card-content>
+        <div style="display: block">
+          <canvas baseChart width="300" height="300" responsive="true"
+                      [data]="chartData"
+                      [labels]="chartLabels"
+                      [colors]="chartColors"
+                      [chartType]="'doughnut'"></canvas>
+        </div>
+    </ion-card-content>
+  </ion-card>
+</ng-container>
+
+<info-fab [infos]="infos"></info-fab>

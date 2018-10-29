@@ -1,0 +1,62 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Számlaképek feltöltése</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <h1 text-center>
+      {{pageTitle}}
+  </h1>
+
+  <info-fab [infos]="help"></info-fab>
+
+  <ion-grid>
+
+    <ion-row>
+        <ion-col>
+          <ion-item no-lines>
+            <ion-label>{{options?.title}}</ion-label>
+            <ion-select [(ngModel)]="selectedOption" (ionChange)="onChange($event)">
+              <ion-option *ngFor="let option of options?.values" value="{{option.value}}">{{option.text}}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+    </ion-row>
+
+    <ion-row>
+        <ion-col>
+            <img *ngIf="!imagePriview" src="assets/imgs/image_placeholder.jpg" (click)="fileInput.click()">
+            <img *ngIf="imagePriview" [src]="imagePriview" (click)="fileInput.click()">
+            <input type="file" #fileInput (change)="onFileChanged($event)" style="display: none;">
+          <ion-grid no-padding style="margin-top: 16px;">
+            <ion-row>
+              <ion-col>
+                  <button text-center color="secondary" ion-button round (click)="onCamera()" icon-start>
+                    <ion-icon name="camera"></ion-icon>
+                    Camera
+                  </button>
+              </ion-col>
+              <ion-col>
+                  <!-- <button ion-button outline (click)="fileInput.click()">Valaszon Fajlt</button> -->
+                  <button text-center [disabled]="!file" ion-button round (click)="onUpload()" icon-start>
+                    <ion-icon name="cloud-upload"></ion-icon>
+                    {{title}}
+                  </button>
+
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+        </ion-col>
+    </ion-row>
+
+
+
+  </ion-grid>
+
+</ion-content>

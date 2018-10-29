@@ -14,6 +14,16 @@ import { AuthService } from '../services/auth.service';
 import { ConnectionService } from '../services/connection.service';
 import { TokenInterceptor } from '../interceptors/token.interceptor';
 
+import { Camera } from '@ionic-native/camera';
+import { File } from '@ionic-native/file';
+import { FileTransfer } from '@ionic-native/file-transfer';
+import { FileOpener } from '@ionic-native/file-opener';
+
+
+import { registerLocaleData } from '@angular/common';
+import localeHu from '@angular/common/locales/hu';
+registerLocaleData(localeHu, 'hu');
+
 @NgModule({
   declarations: [
     MyApp,
@@ -37,6 +47,10 @@ import { TokenInterceptor } from '../interceptors/token.interceptor';
     SplashScreen,
     //{provide: ErrorHandler, useClass: IonicErrorHandler,multi:true},
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor,multi:true},
+    FileOpener,
+    File,
+    FileTransfer,
+    Camera
   ]
 })
 export class AppModule {}

@@ -3,6 +3,7 @@ import { IonicPage, NavController, ToastController, PopoverController, MenuContr
 import { AuthService } from '../../services/auth.service';
 import { Company } from '../../models/interfaces';
 import { DataService } from '../../services/data.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @IonicPage()
 @Component({
@@ -11,6 +12,8 @@ import { DataService } from '../../services/data.service';
 })
 export class DashboardPage implements OnInit{
   company: Company;
+  component: string = 'dashboard';
+  sub$:Subscription;
 
   constructor(
     private navCtrl: NavController,
@@ -45,6 +48,7 @@ export class DashboardPage implements OnInit{
       else{
         this.company = company;
         this.data.getMenu();
+        this.data.companyObserver$.next(company);
         console.log("COMPANY:",this.company)
       }
     } catch (error) {
@@ -56,6 +60,47 @@ export class DashboardPage implements OnInit{
       });
       toast.present();
     }
+
+    this.sub$ = this.data.selectedMenuItemObservable$.subscribe(
+      component => {
+
+        console.log(component)
+        switch(component){
+          case '/dashboard/index':
+            this.component = 'dashboard';
+            break;
+          case '/report/show':
+            this.component = 'report';
+            break;
+          case '/accounting_invoice/index':
+            this.component = 'invoice';
+            break;
+          case '/employee/index':
+            this.component = 'wage-center';
+            break;
+          case '/car/index':
+            this.component = 'company-car';
+            break;
+          case '/mission/index':
+            this.component = 'mission';
+            break;
+          case '/statistic/accounting_invoice':
+            this.component = 'statistics';
+            break;
+          case '/accounting/closings':
+            this.component = 'closings';
+            break;
+          case '/accounting/overview':
+            this.component = 'overview';
+            break;
+          default:
+            this.component = 'dashboard';
+            break;
+        }
+        //this.component = 'invoice';
+      }
+    );
+
   }
 
   onOpenUserMenu(ev: Event){
@@ -75,5 +120,16 @@ export class DashboardPage implements OnInit{
     this.auth.logout();
     this.navCtrl.setRoot('LoginPage');
   }
+
+  onUrl(url:string){
+    this.navCtrl.push('AccountingShowMonthPage',{url});
+  }
+
+  ngOnDestroy(){
+    if(this.sub$){
+      this.sub$.unsubscribe();
+    }
+  }
+
 
 }
