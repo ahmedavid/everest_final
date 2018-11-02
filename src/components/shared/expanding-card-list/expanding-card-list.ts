@@ -16,7 +16,14 @@ export class ExpandingCardListComponent {
   @Output('url') url = new EventEmitter<string>();
   @Output('onToggleCheckbox') onToggleCheckbox = new EventEmitter<{isPaid:boolean,index:number}>();
 
-  constructor() {}
+  constructor() {
+  }
+
+  ngOnChanges(){
+    console.log("BODY:",this.tbody)
+    console.log("BODY:",this.thead)
+
+  }
 
   onToggle(row:any){
     row.toggle = !row.toggle;

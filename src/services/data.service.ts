@@ -25,7 +25,6 @@ export class DataService {
     private auth: AuthService,
     private http: HttpClient
   ){
-    console.log('WTF IS GOIN ON')
     this.Init();
   }
 
@@ -94,5 +93,28 @@ export class DataService {
     const token = await this.auth.getToken();
     return this.http.post("https://portal.everest.hu" + url,formData).toPromise();
   }
+
+  async updatePaid(type:string,date:string,isPaid:boolean){
+    const token = await this.auth.getToken();
+    const company = await this.auth.getCurrentCopmany();
+    if(token == null|| company == null) return;
+
+    const due_date = date.replace(/\./g, '-');
+    //const query = "?type="+"asdf"+"&due_date="+due_date+"&is_paid="+isPaid+"&selected_company_id="+company.id;
+    const urele = this.baseUrl + "/accounting/savePaidItem";
+    type = type.slice(0,type.indexOf("("));
+
+    const formData = new FormData();
+    formData.append("type",type);
+    formData.append("due_date",due_date);
+    formData.append("is_paid",isPaid ? "true" : "");
+    formData.append("selected_company_id",company.id);
+
+    return this.http.post(
+      urele,formData
+    ).toPromise();
+  }
+
+
 
 }

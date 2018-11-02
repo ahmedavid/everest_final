@@ -48,7 +48,9 @@ export class DashboardPage implements OnInit{
       else{
         this.company = company;
         this.data.getMenu();
-        this.data.companyObserver$.next(company);
+        if(this.data.companyObserver$){
+          this.data.companyObserver$.next(company);
+        }
         console.log("COMPANY:",this.company)
       }
     } catch (error) {
