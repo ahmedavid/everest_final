@@ -36,9 +36,9 @@ export class ExpandingCardListComponent {
   }
 
   onPaidChanged(ev,index:number){
-    console.log("Paid Changed: ",ev.value);
+    console.log("Paid Changed: ",ev);
     this.onToggleCheckbox.emit({
-      isPaid:ev.value,
+      isPaid:ev,
       index
     });
   }

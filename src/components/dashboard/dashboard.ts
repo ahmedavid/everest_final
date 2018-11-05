@@ -65,6 +65,7 @@ export class DashboardComponent implements OnInit{
       console.log("PARAMS: ",params);
       const date = this.tbody[params.index][0];
       const type = this.tbody[params.index][1];
+      console.log("PPP:", date,type,params);
       await this.data.updatePaid(type,date,params.isPaid);
       this.loadData(this.url);
     } catch (error) {

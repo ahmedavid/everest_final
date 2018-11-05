@@ -23,10 +23,13 @@
         </div>
         <ion-list no-lines>
           <ng-container *ngFor="let column of row;let i=index">
+            
             <ion-item *ngIf="column.type !== 'link'" no-padding>
               <h5 ion-text color="light" class="tiny-title">{{thead[i]}}</h5> {{column}}
             </ion-item>
-            <ion-checkbox (ionChange)="onPaidChanged($event,j)" color="secondary" *ngIf="showCheckbox && i==5" [checked]="column == 'Igen'" class="checkbox"></ion-checkbox>
+            
+            <paid-marker *ngIf="showCheckbox && i==5" [isPaid]="column == 'Igen'" class="checkbox" (onTogglePaid)="onPaidChanged($event,j)"></paid-marker>
+            <!-- <ion-checkbox (ionChange)="onPaidChanged($event,j)" color="secondary" *ngIf="showCheckbox && i==5" [checked]="column == 'Igen'" class="checkbox"></ion-checkbox> -->
             <button clear class="view-btn" ion-button color="secondary" *ngIf="showLink && column.type == 'link'" icon-only (click)="onViewDetail($event,column.src)">
               <ion-icon name="eye"></ion-icon>
             </button>

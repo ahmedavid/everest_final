@@ -95,8 +95,10 @@ export class DataService {
   }
 
   async updatePaid(type:string,date:string,isPaid:boolean){
+   
     const token = await this.auth.getToken();
     const company = await this.auth.getCurrentCopmany();
+    
     if(token == null|| company == null) return;
 
     const due_date = date.replace(/\./g, '-');

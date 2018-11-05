@@ -17,6 +17,7 @@ import { InfoFabComponent } from './shared/info-fab/info-fab';
 import { StatCardComponent } from './shared/stat-card/stat-card';
 import { SelectCardComponent } from './shared/select-card/select-card';
 import { ChartsComponent } from './shared/charts/charts';
+import { PaidMarkerComponent } from './shared/paid-marker/paid-marker';
 @NgModule({
 	declarations: [
     DateNavigatorComponent,
@@ -33,7 +34,8 @@ import { ChartsComponent } from './shared/charts/charts';
     InfoFabComponent,
     StatCardComponent,
     SelectCardComponent,
-    ChartsComponent
+    ChartsComponent,
+    PaidMarkerComponent
   ],
 	imports: [IonicModule,ChartsModule],
 	exports: [
@@ -51,7 +53,8 @@ import { ChartsComponent } from './shared/charts/charts';
     InfoFabComponent,
     StatCardComponent,
     SelectCardComponent,
-    ChartsComponent
+    ChartsComponent,
+    PaidMarkerComponent
   ]
 })
 export class ComponentsModule {}
